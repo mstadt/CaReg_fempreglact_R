@@ -1,7 +1,7 @@
 get_varnames <- function() {
     c("amt_PTHg",
-    "amt_PTHp",
-    "amt_Cap",
-    "amt_D3p",
+    "PTHp_con",
+    "Cap_con",
+    "D3p_con",
     "amt_NCaf")
 }

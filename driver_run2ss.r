@@ -7,14 +7,10 @@ source("ca_mod_eqns.r")
 source("varnames.r")
 source("init_conds.r")
 
-init_cond = c(amt_PTHg = 34.986,
-                amt_PTHp = 0.06279,
-                amt_Cap = 0.01179,
-                amt_D3p = 1.53688,
-                amt_NCaf =1.626)
+sexORrep <- 'female'
 
-camod <- list(init = init_conds(),
-            params = set_params('male'),
+camod <- list(init = init_conds(sexORrep),
+            params = set_params(sexORrep),
             cmt = get_varnames(),
             model = ca_mod_eqns
             )
