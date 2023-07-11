@@ -41,3 +41,15 @@ camod_res_morris <- ODEmorris(mod = modeqns,
 end <- Sys.time()
 print(end)
 print(difftime(end, start, units = "mins"))
+
+save_info = 1
+if (save_info) {
+    today <- Sys.Date()
+    fname <- paste(today, 
+                    "_MorrisAnalysis_SS",
+                    ".RData",
+                    sep = "")
+    save.image(fname)
+    print("results saved to:")
+    print(sprintf("%s", fname))
+}
