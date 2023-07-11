@@ -78,7 +78,7 @@ ca_mod_eqns <- function(Time, State, Pars) {
         dD3p = D3_synthesis - D3_degradation
 
         # NCaf
-        Bone_accretion = Gamma_ac * NCa_f
+        Bone_accretion = Gamma_ac * amt_NCaf
         dNCaf = Plasma_to_FastPool - FastPool_to_Plasma - Bone_accretion
 
         return(list(c(dPTHg, dPTHp, dCap, dD3p, dNCaf)))
