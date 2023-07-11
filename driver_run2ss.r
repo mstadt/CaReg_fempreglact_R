@@ -7,7 +7,7 @@ source("ca_mod_eqns.r")
 source("varnames.r")
 source("init_conds.r")
 
-sexORrep <- 'female'
+sexORrep <- 'lact'
 
 camod <- list(init = init_conds(sexORrep),
             params = set_params(sexORrep),
