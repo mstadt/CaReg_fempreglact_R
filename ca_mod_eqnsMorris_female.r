@@ -1,4 +1,4 @@
-ca_mod_eqnsMorris_male <- function(Time, State, Pars) {
+ca_mod_eqnsMorris_female <- function(Time, State, Pars) {
     # simulation settings
     
     # state varables
@@ -24,12 +24,12 @@ ca_mod_eqnsMorris_male <- function(Time, State, Pars) {
         k_deg_D3 = 0.0029
 
         # params that change in female models
-        delta_PT_max = 0.03
-        Lambda_PT0 = 0.66
-        delta_TAL_max = 0.015
-        Lambda_TAL0 = 0.185
-        delta_DCT_max = 0.015
-        Lambda_DCT0 = 0.095
+        delta_PT_max = 0.027
+        Lambda_PT0 = 0.594
+        delta_TAL_max = 0.025
+        Lambda_TAL0 = 0.21
+        delta_DCT_max = 0.018
+        Lambda_DCT0 = 0.127
         
 
         # PTHg
