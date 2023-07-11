@@ -60,7 +60,7 @@ parsbinf <- c(0.9 * p$Vp,
             0.9 * p$D3_inact_p,
             0.9 * p$gamma_deg_PTHp,
             0.9 * p$Gamma_ac,
-            0.9 * p$FetusORMilk, # note: will be 0 for male and female mods
+            0.9 * p$FetusORMilk # note: will be 0 for male and female mods
             )
 
 parsbsup <- c(1.10 * p$Vp,
@@ -92,5 +92,5 @@ parsbsup <- c(1.10 * p$Vp,
             1.10 * p$D3_inact_p,
             1.10 * p$gamma_deg_PTHp,
             1.10 * p$Gamma_ac,
-            1.10 * p$FetusORMilk, # note: will be 0 for female and male mods
+            1.10 * p$FetusORMilk # note: will be 0 for female and male mods
             )
