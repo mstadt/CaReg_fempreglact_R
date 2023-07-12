@@ -1,4 +1,4 @@
-ca_mod_eqnsMorris_male<- function(Time, State, Pars) {
+ca_mod_eqnsMorris_female<- function(Time, State, Pars) {
     # simulation settings
     
     # state varables
