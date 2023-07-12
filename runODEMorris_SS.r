@@ -1,7 +1,8 @@
 library(ODEsensitivity)
 
 source("set_params.r")
-source("ca_mod_eqnsMorris_1.r")
+source("ca_mod_eqnsMorris_male.r")
+soucre("ca_mod_eqnsMorris_female.r")
 source("varnames.r")
 source("init_conds.r")
 
@@ -12,8 +13,10 @@ init_cond <- unlist(init_conds(sexORrep)[vnames])
 p <- set_params(sexORrep)
 
 if (sexORrep == 'male') {
-    modeqns <- ca_mod_eqnsMorris_1
-} else {
+    modeqns <- ca_mod_eqnsMorris_male
+} else if (sexORrep == 'female') {
+   modeqns <- ca_mod_eqnsMorris_female
+}else {
     print(sexORrep + " not found")
 }
 
