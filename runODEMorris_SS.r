@@ -6,7 +6,7 @@ soucre("ca_mod_eqnsMorris_female.r")
 source("varnames.r")
 source("init_conds.r")
 
-sexORrep <- 'male'
+sexORrep <- 'female'
 
 vnames <- get_varnames()
 init_cond <- unlist(init_conds(sexORrep)[vnames])
