@@ -2,7 +2,7 @@ library(ODEsensitivity)
 
 source("set_params.r")
 source("ca_mod_eqnsMorris_male.r")
-soucre("ca_mod_eqnsMorris_female.r")
+source("ca_mod_eqnsMorris_female.r")
 source("varnames.r")
 source("init_conds.r")
 
