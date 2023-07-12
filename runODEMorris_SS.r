@@ -1,10 +1,10 @@
 library(ODEsensitivity)
 
 source("set_params.r")
-source("ca_mod_eqnsMorris_male.r")
-source("ca_mod_eqnsMorris_female.r")
-source("ca_mod_eqnsMorris_preg.r")
-source("ca_mod_eqnsMorris_lact.r")
+
+
+
+
 source("varnames.r")
 source("init_conds.r")
 
@@ -15,21 +15,28 @@ init_cond <- unlist(init_conds(sexORrep)[vnames])
 p <- set_params(sexORrep)
 
 if (sexORrep == 'male') {
+    source("ca_mod_eqnsMorris_male.r")
     modeqns <- ca_mod_eqnsMorris_male
+    # to get testpars, parsbinf, parsbsup
+    source("set_morris_mf.r")
 } else if (sexORrep == 'female') {
-   modeqns <- ca_mod_eqnsMorris_female
+    source("ca_mod_eqnsMorris_female.r")
+    modeqns <- ca_mod_eqnsMorris_female
+    # to get testpars, parsbinf, parsbsup
+    source("set_morris_mf.r")
 } else if (sexORrep == 'preg') {
-   modeqns <- ca_mod_eqnsMorris_preg
+    source("ca_mod_eqnsMorris_preg.r")
+    modeqns <- ca_mod_eqnsMorris_preg
+    source("set_morris_preglact.r")
 } else if (sexORrep == 'lact') {
-   modeqns <- ca_mod_eqnsMorris_lact
+    source("ca_mod_eqnsMorris_lact.r")
+    modeqns <- ca_mod_eqnsMorris_lact
+    source("set_morris_preglact.r")
 } else {
     print(sexORrep + " not found")
 }
 
 mtimes <- c(1000, 4000)
-
-# to get testpars, parsbinf, parsbsup
-source("set_morris.r")
 
 # run Morris Method
 set.seed(151)

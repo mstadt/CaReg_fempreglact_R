@@ -1,6 +1,5 @@
 # parameter settings for Morris method
 # (21 parameters from local sensitivity analysis)
-# NOTE: FETUSORMILK NOT INCLUDED (add later in preg/lact)
 
 testpars <- c("Vp",
             "k_PTHp_deg",
