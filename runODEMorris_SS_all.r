@@ -1,8 +1,8 @@
 library(ODEsensitivity)
 
 source("set_params.r")
-source("ca_mod_eqnsMorris_male.r")
-source("ca_mod_eqnsMorris_female.r")
+source("ca_mod_eqnsMorris_male_all.r")
+#source("ca_mod_eqnsMorris_female.r")
 source("varnames.r")
 source("init_conds.r")
 
@@ -13,21 +13,20 @@ init_cond = unlist(init_conds(sexORrep)[vnames])
 p <- set_params(sexORrep)
 
 if (sexORrep == 'male') {
-    modeqns <- ca_mod_eqnsMorris_male
-} else if (sexORrep == 'female') {
-    modeqns <- ca_mod_eqnsMorris_female
-} else if (sexORrep == 'preg') {
-    modeqns <- ca_mod_eqnsMorris_female
-} else if (sexORrep == 'lact') {
-    modeqns <- ca_mod_eqnsMorris_female
+    # to get testpars, parsbinf, parsbsup
+    source("set_morris_mf.r")
+    modeqns <- ca_mod_eqnsMorris_male_all
+# } else if (sexORrep == 'female') {
+#     modeqns <- ca_mod_eqnsMorris_female
+# } else if (sexORrep == 'preg') {
+#     modeqns <- ca_mod_eqnsMorris_female
+# } else if (sexORrep == 'lact') {
+#     modeqns <- ca_mod_eqnsMorris_female
 } else {
     print(sexORrep + " not found")
 }
 
 mtimes <- c(1000, 4000)
-
-# to get testpars, parsbinf, parsbsup
-source("set_morris.r")
 
 # run Morris Method
 set.seed(151)
@@ -53,7 +52,8 @@ save_info = 1
 if (save_info) {
     today <- Sys.Date()
     fname <- paste(today, 
-                    "_MorrisAnalysis_SS",
+                    "_MorrisAnalysis_SS_all",
+                    "_sexORrep-", sexORrep,
                     ".RData",
                     sep = "")
     save.image(fname)
