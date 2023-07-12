@@ -12,15 +12,15 @@ ca_mod_eqnsMorris_female<- function(Time, State, Pars) {
         # fixed parameters (not changed in Morris)
 
         # parameters not changed between sexes
-        k_PTHg_deg = 0.035
+        #k_PTHg_deg = 0.035
         n1_exo = 100
         n2_exo = 30
         rho_exo = 10
         R = 1.1
-        beta_exo_PTHg = 0.059
-        gamma_exo_PTHg = 0.057
-        K_PTHp_res = 2.45
-        Gamma_res_min = 0.142e-3
+        #beta_exo_PTHg = 
+        gamma_exo_PTHg = beta_exo_PTHg - (0.059- 0.057)
+        # K_PTHp_res = 2.45
+        # Gamma_res_min = 0.142e-3
         PTHp_ref = 12
         nPT = 2
         Cap_ref = 1.7

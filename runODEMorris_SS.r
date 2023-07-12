@@ -4,7 +4,7 @@ source("set_params.r")
 source("varnames.r")
 source("init_conds.r")
 
-sexORrep <- 'lact'
+sexORrep <- 'female'
 
 vnames <- get_varnames()
 init_cond <- unlist(init_conds(sexORrep)[vnames])
