@@ -7,7 +7,7 @@ source("ca_mod_eqnsMorris_preg.r")
 source("varnames.r")
 source("init_conds.r")
 
-sexORrep <- 'female'
+sexORrep <- 'preg'
 
 vnames <- get_varnames()
 init_cond <- unlist(init_conds(sexORrep)[vnames])
