@@ -1,18 +1,25 @@
 library(ODEsensitivity)
 
 source("set_params.r")
-source("ca_mod_eqnsMorris_1.r")
+source("ca_mod_eqnsMorris_male.r")
+source("ca_mod_eqnsMorris_female.r")
 source("varnames.r")
 source("init_conds.r")
 
 sexORrep <- 'male'
 
 vnames <- get_varnames()
-init_cond <- unlist(init_conds(sexORrep)[vnames])
+init_cond = unlist(init_conds(sexORrep)[vnames])
 p <- set_params(sexORrep)
 
 if (sexORrep == 'male') {
-    modeqns <- ca_mod_eqnsMorris_1
+    modeqns <- ca_mod_eqnsMorris_male
+} else if (sexORrep == 'female') {
+    modeqns <- ca_mod_eqnsMorris_female
+} else if (sexORrep == 'preg') {
+    modeqns <- ca_mod_eqnsMorris_female
+} else if (sexORrep == 'lact') {
+    modeqns <- ca_mod_eqnsMorris_female
 } else {
     print(sexORrep + " not found")
 }
@@ -34,7 +41,8 @@ camod_res_morris <- ODEmorris(mod = modeqns,
                                 times = mtimes,
                                 binf = parsbinf,
                                 bsup = parsbsup,
-                                r = 1000
+                                r = 1000,
+                                sexORrep = sexORrep
                                 )
 
 end <- Sys.time()
@@ -46,8 +54,6 @@ if (save_info) {
     today <- Sys.Date()
     fname <- paste(today, 
                     "_MorrisAnalysis_SS",
-                    "sexORrep-",
-                    sexORrep,
                     ".RData",
                     sep = "")
     save.image(fname)
