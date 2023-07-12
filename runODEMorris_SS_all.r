@@ -14,7 +14,7 @@ p <- set_params(sexORrep)
 
 if (sexORrep == 'male') {
     # to get testpars, parsbinf, parsbsup
-    source("set_morris_mf.r")
+    source("set_morris_all.r")
     modeqns <- ca_mod_eqnsMorris_male_all
 # } else if (sexORrep == 'female') {
 #     modeqns <- ca_mod_eqnsMorris_female
