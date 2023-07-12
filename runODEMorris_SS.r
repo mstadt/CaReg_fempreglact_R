@@ -46,7 +46,7 @@ if (save_info) {
     today <- Sys.Date()
     fname <- paste(today, 
                     "_MorrisAnalysis_SS",
-                    "sexORrep-",
+                    "_sexORrep-",
                     sexORrep,
                     ".RData",
                     sep = "")
