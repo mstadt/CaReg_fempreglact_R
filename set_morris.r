@@ -22,7 +22,8 @@ testpars <- c("Vp",
             "K_conv_PTH",
             "k_prod_PTHg",
             "gamma_deg_PTHp",
-            "Gamma_ac"
+            "Gamma_ac",
+            "FetusORMilk"
             )
 
 rde <- 0.9 # ratio to decrease
@@ -46,7 +47,8 @@ parsbinf <- c(rde * p$Vp,
             rde * p$K_conv_PTH,
             rde * p$k_prod_PTHg,
             rde * p$gamma_deg_PTHp,
-            rde * p$Gamma_ac
+            rde * p$Gamma_ac,
+            rde * p$FetusORMilk
             )
 
 rinc <- 1.1 # ratio to increase
@@ -70,5 +72,6 @@ parsbsup <- c(rinc * p$Vp,
             rinc * p$K_conv_PTH,
             rinc * p$k_prod_PTHg,
             rinc * p$gamma_deg_PTHp,
-            rinc * p$Gamma_ac
+            rinc * p$Gamma_ac,
+            rinc * p$FetusORMilk
             )

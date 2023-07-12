@@ -3,6 +3,7 @@ library(ODEsensitivity)
 source("set_params.r")
 source("ca_mod_eqnsMorris_male.r")
 source("ca_mod_eqnsMorris_female.r")
+source("ca_mod_eqnsMorris_preg.r")
 source("varnames.r")
 source("init_conds.r")
 
@@ -16,7 +17,9 @@ if (sexORrep == 'male') {
     modeqns <- ca_mod_eqnsMorris_male
 } else if (sexORrep == 'female') {
    modeqns <- ca_mod_eqnsMorris_female
-}else {
+} else if (sexORrep == 'preg') {
+   modeqns <- ca_mod_eqnsMorris_preg
+} else {
     print(sexORrep + " not found")
 }
 
