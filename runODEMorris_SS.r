@@ -1,10 +1,6 @@
 library(ODEsensitivity)
 
 source("set_params.r")
-
-
-
-
 source("varnames.r")
 source("init_conds.r")
 
@@ -43,7 +39,6 @@ set.seed(151)
 start <- Sys.time()
 print(start)
 print('computing Morris method')
-
 camod_res_morris <- ODEmorris(mod = modeqns,
                                 pars = testpars,
                                 state_init = init_cond,
