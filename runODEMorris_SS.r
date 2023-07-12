@@ -4,6 +4,7 @@ source("set_params.r")
 source("ca_mod_eqnsMorris_male.r")
 source("ca_mod_eqnsMorris_female.r")
 source("ca_mod_eqnsMorris_preg.r")
+source("ca_mod_eqnsMorris_lact.r")
 source("varnames.r")
 source("init_conds.r")
 
@@ -19,6 +20,8 @@ if (sexORrep == 'male') {
    modeqns <- ca_mod_eqnsMorris_female
 } else if (sexORrep == 'preg') {
    modeqns <- ca_mod_eqnsMorris_preg
+} else if (sexORrep == 'lact') {
+   modeqns <- ca_mod_eqnsMorris_lact
 } else {
     print(sexORrep + " not found")
 }
