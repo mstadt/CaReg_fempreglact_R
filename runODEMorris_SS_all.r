@@ -4,7 +4,7 @@ source("set_params.r")
 source("varnames.r")
 source("init_conds.r")
 
-sexORrep <- 'male'
+sexORrep <- 'female'
 
 vnames <- get_varnames()
 init_cond = unlist(init_conds(sexORrep)[vnames])
@@ -15,8 +15,10 @@ if (sexORrep == 'male') {
     source("set_morris_all.r")
     source("ca_mod_eqnsMorris_male_all.r")
     modeqns <- ca_mod_eqnsMorris_male_all
-# } else if (sexORrep == 'female') {
-#     modeqns <- ca_mod_eqnsMorris_female
+} else if (sexORrep == 'female') {
+   source("set_morris_all.r")
+    source("ca_mod_eqnsMorris_male_all.r")
+    modeqns <- ca_mod_eqnsMorris_male_all # same for male and female
 # } else if (sexORrep == 'preg') {
 #     modeqns <- ca_mod_eqnsMorris_female
 # } else if (sexORrep == 'lact') {
