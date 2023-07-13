@@ -5,6 +5,8 @@ source("varnames.r")
 source("init_conds.r")
 
 sexORrep <- 'female'
+temp <- sprintf("%s Morris analysis", sexORrep)
+print(temp)
 
 vnames <- get_varnames()
 init_cond = unlist(init_conds(sexORrep)[vnames])
@@ -12,17 +14,21 @@ p <- set_params(sexORrep)
 
 if (sexORrep == 'male') {
     # to get testpars, parsbinf, parsbsup
-    source("set_morris_all.r")
+    source("set_morris_all_mf.r")
     source("ca_mod_eqnsMorris_male_all.r")
     modeqns <- ca_mod_eqnsMorris_male_all
 } else if (sexORrep == 'female') {
-   source("set_morris_all.r")
+    source("set_morris_all_mf.r")
     source("ca_mod_eqnsMorris_male_all.r")
     modeqns <- ca_mod_eqnsMorris_male_all # same for male and female
-# } else if (sexORrep == 'preg') {
-#     modeqns <- ca_mod_eqnsMorris_female
-# } else if (sexORrep == 'lact') {
-#     modeqns <- ca_mod_eqnsMorris_female
+} else if (sexORrep == 'preg') {
+    source("set_morris_all_preglact.r")
+    source("ca_mod_eqnsMorris_preglact_all.r")
+    modeqns <- ca_mod_eqnsMorris_preglact_all
+} else if (sexORrep == 'lact') {
+    source("set_morris_all_preglact.r")
+    source("ca_mod_eqnsMorris_preglact_all.r")
+    modeqns <- ca_mod_eqnsMorris_preglact_all
 } else {
     print(sexORrep + " not found")
 }
