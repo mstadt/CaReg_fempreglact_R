@@ -1,4 +1,4 @@
-ca_mod_eqnsMorris_female<- function(Time, State, Pars) {
+ca_mod_eqnsMorris_female <- function(Time, State, Pars) {
     # simulation settings
     
     # state varables
@@ -10,38 +10,27 @@ ca_mod_eqnsMorris_female<- function(Time, State, Pars) {
 
     with(as.list(c(State, Pars)), {
         # fixed parameters (not changed in Morris)
-
-        # parameters not changed between sexes
-        #k_PTHg_deg = 0.035
+        # params same in all models
+        k_PTHg_deg = 0.035
         n1_exo = 100
         n2_exo = 30
         rho_exo = 10
         R = 1.1
-        #beta_exo_PTHg = 
-        gamma_exo_PTHg = beta_exo_PTHg - (0.059- 0.057)
-        # K_PTHp_res = 2.45
-        # Gamma_res_min = 0.142e-3
-        PTHp_ref = 12
+        k_PTHp_deg = 0.1320
         nPT = 2
-        Cap_ref = 1.7
         nTAL = 2
-        K_DCT_PTHp = 7.25
         kappa_b = 0.4
-        FetusORMilk = 0
         nconv = 6
-        gamma_conv_Ca = 0.3
-        K_TAL_PTHp = 4
+        k_deg_D3 = 0.0029
 
-        # sex-specific parameters (female values)
-        gamma_prod_D3 = 5.4e-3
-        GFR = 1.4e-3
+        # params that change in female models
         delta_PT_max = 0.027
+        Lambda_PT0 = 0.594
         delta_TAL_max = 0.025
+        Lambda_TAL0 = 0.21
         delta_DCT_max = 0.018
-        K_DCT_D3p = 85
-        gamma_conv_D3 = 3.8e-2
-        delta_conv_max = 3.5e-5
-
+        Lambda_DCT0 = 0.127
+        
 
         # PTHg
         PTHg_prod_effect_D3 = 1/(1 + gamma_prod_D3 * D3p_con)
