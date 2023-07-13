@@ -11,26 +11,26 @@ ca_mod_eqnsMorris_male_all <- function(Time, State, Pars) {
     with(as.list(c(State, Pars)), {
         # fixed parameters (not changed in Morris)
         # params same in all models
-        k_PTHg_deg = 0.035
+        #k_PTHg_deg = 0.035
         n1_exo = 100
         n2_exo = 30
         rho_exo = 10
         R = 1.1
-        k_PTHp_deg = 0.1320
+        # k_PTHp_deg = 0.1320
         nPT = 2
         nTAL = 2
         kappa_b = 0.4
         nconv = 6
-        k_deg_D3 = 0.0029
+        #k_deg_D3 = 0.0029
         FetusORMilk = 0
 
         # params that change in female models
-        delta_PT_max = 0.03
-        Lambda_PT0 = 0.66
-        delta_TAL_max = 0.015
-        Lambda_TAL0 = 0.185
-        delta_DCT_max = 0.015
-        Lambda_DCT0 = 0.095
+        #delta_PT_max = 0.03
+        #Lambda_PT0 = 0.66
+        #delta_TAL_max = 0.015
+        #Lambda_TAL0 = 0.185
+        #delta_DCT_max = 0.015
+        #Lambda_DCT0 = 0.095
 
         
 

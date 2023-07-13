@@ -1,8 +1,6 @@
 library(ODEsensitivity)
 
 source("set_params.r")
-source("ca_mod_eqnsMorris_male_all.r")
-#source("ca_mod_eqnsMorris_female.r")
 source("varnames.r")
 source("init_conds.r")
 
@@ -15,6 +13,7 @@ p <- set_params(sexORrep)
 if (sexORrep == 'male') {
     # to get testpars, parsbinf, parsbsup
     source("set_morris_all.r")
+    source("ca_mod_eqnsMorris_male_all.r")
     modeqns <- ca_mod_eqnsMorris_male_all
 # } else if (sexORrep == 'female') {
 #     modeqns <- ca_mod_eqnsMorris_female

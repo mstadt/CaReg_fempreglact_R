@@ -28,7 +28,15 @@ testpars <- c("Vp",
             "D3_inact_p",
             "gamma_deg_PTHp",
             "Gamma_ac",
-            "gamma_prod_D3"
+            "gamma_prod_D3",
+            "k_PTHg_deg",
+            "k_deg_D3",
+            "delta_PT_max",
+            "Lambda_PT0",
+            "delta_TAL_max",
+            "Lambda_TAL0",
+            "delta_DCT_max",
+            "Lambda_DCT0"
             )
 
 parsbinf <- c(0.9 * p$Vp,
@@ -60,7 +68,15 @@ parsbinf <- c(0.9 * p$Vp,
             0.9 * p$D3_inact_p,
             0.9 * p$gamma_deg_PTHp,
             0.9 * p$Gamma_ac,
-            0.9 * p$gamma_prod_D3
+            0.9 * p$gamma_prod_D3,
+            0.9 * p$k_PTHg_deg,
+            0.9 * p$k_deg_D3,
+            0.9 * p$delta_PT_max,
+            0.9 * p$Lambda_PT0,
+            0.9 * p$delta_TAL_max,
+            0.9 * p$Lambda_TAL0,
+            0.9 * p$delta_DCT_max,
+            0.9 * p$Lambda_DCT0
             )
 
 parsbsup <- c(1.10 * p$Vp,
@@ -92,5 +108,13 @@ parsbsup <- c(1.10 * p$Vp,
             1.10 * p$D3_inact_p,
             1.10 * p$gamma_deg_PTHp,
             1.10 * p$Gamma_ac,
-            1.10 * p$gamma_prod_D3
+            1.10 * p$gamma_prod_D3,
+            1.10 * p$k_PTHp_deg,
+            1.10 * p$k_deg_D3,
+            1.10 * p$delta_PT_max,
+            1.10 * p$Lambda_PT0,
+            1.10 * p$delta_TAL_max,
+            1.10 * p$Lambda_TAL0,
+            1.10 * p$delta_DCT_max,
+            1.10 * p$Lambda_DCT0
             )
