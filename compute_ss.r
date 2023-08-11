@@ -17,20 +17,16 @@ compute_ss <- function(X) {
         ST1 <- runsteady(init_guess, time = c(0,5000), func = ca_mod_eqnsMorris_male_all,
                             parms = X[i, ])
         ST <- stodes(ST1$y, times = 0, func = ca_mod_eqnsMorris_male_all,
-                            parms = X[i, ])
+                            parms = X[i, ], rtol = 1e-3, atol = 1e-3)
         # attributes(ST) # could use this to debug and see what attributes are!
         check_ss <- attributes(ST)$steady # this can check for steady state
         if (!check_ss) {
             print(i)
-            return(ST1$y) # set to run steady if has issues
+            return(ST1$y) # set to run steady if has issues converging
         } else {
             return(ST$y)
         }
         }
-
-        # error: diagonal element is 0.... This might be issue with NCaf0? might want to edit equations file....
-        #           specifically, steady state not reached.... might be NCaf issue though ...
-        # NOTE: changed to using stodes because seems to converge better....
 
     res_per_par <- sapply(1:nrow(X), one_par, simplify = TRUE)
     res_per_state <- aperm(res_per_par)

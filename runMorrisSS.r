@@ -31,6 +31,7 @@ if (sexORrep == 'male') {
 }
 
 # run Morris Method
+set.seed(151)
 source("compute_ss.r")
 rval = 100
 startall <- Sys.time()
