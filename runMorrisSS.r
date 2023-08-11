@@ -31,7 +31,7 @@ if (sexORrep == 'male') {
 }
 
 # run Morris Method
-source("computeSS_1var.r")
+source("compute_ss.r")
 rval = 100
 startall <- Sys.time()
 # PTHp_con
@@ -41,7 +41,7 @@ optsvals <- list(
         sexORrep = sexORrep,
         var_out = "PTHp_con"
         )
-x_PTHp <- morris(model = computeSS,
+x_PTHp <- morris(model = compute_ss,
                     factors = testpars,
                     r = rval,
                     design = list(type = "oat",
@@ -49,8 +49,7 @@ x_PTHp <- morris(model = computeSS,
                                     grid.jump = 1),
                     binf = parsbinf,
                     bsup = parsbsup,
-                    scale = TRUE,
-                    func_opts = optsvals
+                    scale = TRUE
                     )
 
 endPTHp <- Sys.time()
