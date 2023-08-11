@@ -1,7 +1,7 @@
 library(rootSolve)
 library(sensitivity)
 source("set_params.r")
-source("computeSS_1var.r")
+
 
 sexORrep <- "female"
 temp <- sprintf("%s Morris analysis", sexORrep)
@@ -31,6 +31,7 @@ if (sexORrep == 'male') {
 }
 
 # run Morris Method
+source("computeSS_1var.r")
 rval = 100
 startall <- Sys.time()
 # PTHp_con
