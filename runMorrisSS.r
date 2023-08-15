@@ -103,7 +103,7 @@ save_info = 1
 if (save_info) {
     today <- Sys.Date()
     fname <- paste0(today,
-                    "_CaMorrisAnalysisSS_",
+                    "_CaMorrisAnalysisSS",
                     "_sexORrep-", sexORrep,
                     ".RData"
                     )
