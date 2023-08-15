@@ -3,7 +3,7 @@ library(sensitivity)
 source("set_params.r")
 
 
-sexORrep <- "female"
+sexORrep <- "lact"
 temp <- sprintf("%s Morris analysis", sexORrep)
 print(temp)
 
