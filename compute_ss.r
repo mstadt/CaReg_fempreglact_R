@@ -50,7 +50,7 @@ compute_ss <- function(X, optvals) {
             print('trying larger tol')
             print(i)
             ST2 <- stodes(ST1$y, times = 0, func = modeqns,
-                            parms = X[i, ], rtol = 1e-3, atol = 1e-3)
+                            parms = X[i, ], rtol = 1e-4, atol = 1e-5)
             check_ss2 <- attributes(ST2)$steady
             if (!check_ss2) {
                 print('higher tol not reached')
