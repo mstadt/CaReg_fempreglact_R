@@ -30,8 +30,9 @@ if (sexORrep == 'male') {
 # run Morris Method
 set.seed(151)
 source("compute_ss.r")
-rval = 100
+rval = 1000
 startall <- Sys.time()
+print(startall)
 # PTHp_con
 print('start PTHp morris')
 starttemp <- Sys.time()
@@ -54,6 +55,12 @@ x_PTHp <- morris(model = compute_ss,
 endtemp <- Sys.time()
 print(difftime(endtemp, starttemp, unit = "mins"))
 
+# compute mu, mu*, sigma
+x <- x_PTHp
+x_PTHp$mu <- apply(x$ee, 2, mean)
+x_PTHp$mu.star <- apply(x$ee, 2, function(x) mean(abs(x)))
+x_PTHp$sigma <- apply(x$ee, 2, sd)
+
 # Cap_con
 print('start Cap morris')
 starttemp <- Sys.time()
@@ -74,6 +81,11 @@ x_Cap <- morris(model = compute_ss,
             )
 endtemp <- Sys.time()
 print(difftime(endtemp, starttemp, unit = "mins"))
+# compute mu, mu*, sigma
+x <- x_Cap
+x_Cap$mu <- apply(x$ee, 2, mean)
+x_Cap$mu.star <- apply(x$ee, 2, function(x) mean(abs(x)))
+x_Cap$sigma <- apply(x$ee, 2, sd)
 
 # D3p_con
 print('start D3p morris')
@@ -95,7 +107,13 @@ x_D3p <- morris(model = compute_ss,
             )
 endtemp <- Sys.time()
 print(difftime(endtemp, starttemp, unit = "mins"))
+# compute mu, mu*, sigma
+x <- x_D3p
+x_D3p$mu <- apply(x$ee, 2, mean)
+x_D3p$mu.star <- apply(x$ee, 2, function(x) mean(abs(x)))
+x_D3p$sigma <- apply(x$ee, 2, sd)
 
+print('Morris Analysis complete')
 end_all <- Sys.time()
 print(difftime(end_all, startall, units = "mins"))
 
