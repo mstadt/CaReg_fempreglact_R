@@ -64,7 +64,7 @@ ca_mod_eqnsMorris_male_all <- function(Time, State, Pars) {
         delta_DCT_PTH = 0.8 * delta_DCT_max * PTHp_con / (PTHp_con + K_DCT_PTHp)
         delta_DCT_D3  = 0.2 * delta_DCT_max * D3p_con / (D3p_con + K_DCT_D3p)
         Lambda_DCT = Lambda_DCT0 + delta_DCT_PTH + delta_DCT_D3
-        Renal_frac_reab = min(0.9999999, Lambda_PT + Lambda_TAL + Lambda_DCT)
+        Renal_frac_reab = min(0.99, Lambda_PT + Lambda_TAL + Lambda_DCT)
         Urine_excretion = (1-Renal_frac_reab)*Renal_filtration
     
         # bone fast pool
