@@ -20,6 +20,8 @@ ca_mod_eqnsMorris_preglact_all <- function(Time, State, Pars) {
         kappa_b = 0.4
         nconv = 6
 
+        gamma_exo_PTHg = beta_exo_PTHg - exo_diff
+
         # FetusORMilk on for preg/lact models
         # FetusORMilk = 0
 
