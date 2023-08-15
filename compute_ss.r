@@ -42,21 +42,26 @@ compute_ss <- function(X, optvals) {
     one_par <- function(i) {
         #ST1 <- runsteady(init_guess, time = c(0,5000), func = modeqns,
                             #parms = X[i, ])
-        ST <- stodes(init_guess, times = 0, func = modeqns,
+        ST1 <- runsteady(init_guess, time = c(0, 500), func = modeqns,
+                            parms = X[i, ])
+        ST <- stodes(ST1$y, times = 0, func = modeqns,
                             parms = X[i, ], rtol = 1e-5, atol = 1e-6)
         # attributes(ST) # could use this to debug and see what attributes are!
         check_ss1 <- attributes(ST)$steady # this can check for steady state
         if (!check_ss1) {
             print('trying larger tol')
             print(i)
-            ST1 <- runsteady(init_guess, time = c(0, 500), func = modeqns,
-                            parms = X[i, ])
+            print(X[i, ])
+            print(ST1$y)
+            print(ST$y)
             ST2 <- stodes(ST1$y, times = 0, func = modeqns,
                             parms = X[i, ], rtol = 1e-3, atol = 1e-4)
+            print(ST2$y)
             check_ss2 <- attributes(ST2)$steady
             if (!check_ss2) {
                 print('higher tol not reached')
                 print(i)
+                print(ST2$y)
                 return(init_guess)
             }
             return(ST2$y) # set to run steady if has issues converging
