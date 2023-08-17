@@ -122,7 +122,7 @@ print('Morris Analysis complete')
 end_all <- Sys.time()
 print(difftime(end_all, startall, units = "mins"))
 
-save_info = 0
+save_info = 1
 if (save_info) {
     today <- Sys.Date()
     fname <- paste0(today,
