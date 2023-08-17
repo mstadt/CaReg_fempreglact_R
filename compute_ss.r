@@ -24,6 +24,7 @@ compute_ss <- function(X, optvals) {
         D3p_con0 <- 269.108
         NCaf0 <- 1.625
     } else if (sexORrep == 'lact') {
+        #modeqns <- ca_mod_eqnsMorris_lact
         modeqns <- ca_mod_eqnsMorris_preglact_all
         amt_PTHg0 <- 23.445
         PTHp_con0 <- 13.247
@@ -40,40 +41,61 @@ compute_ss <- function(X, optvals) {
                     amt_NCaf = NCaf0)
 
     one_par <- function(i) {
-        #ST1 <- runsteady(init_guess, time = c(0,5000), func = modeqns,
-                            #parms = X[i, ])
-        ST1 <- runsteady(init_guess, time = c(0, 500), func = modeqns,
-                            parms = X[i, ])
-        ST <- stodes(ST1$y, times = 0, func = modeqns,
-                            parms = X[i, ], rtol = 1e-5, atol = 1e-6)
-        # attributes(ST) # could use this to debug and see what attributes are!
-        check_ss1 <- attributes(ST)$steady # this can check for steady state
-        if (!check_ss1) {
-            print('trying larger tol')
+        ST <- runsteady(init_guess, time = c(0, 1e5), func = modeqns,
+                    parms = X[i, ], stol = 1e-06, rtol = 1e-6, atol = 1e-6)
+        checkSS <- attributes(ST)$steady
+        if (checkSS) {
+            return(ST$y)
+        } else if (!checkSS) {
             print(i)
-            print(X[i, ])
-            print(ST1$y)
+            print('WARNING: SS not reached')
             print(ST$y)
-            ST2 <- stodes(ST1$y, times = 0, func = modeqns,
-                            parms = X[i, ], rtol = 1e-3, atol = 1e-4)
-            print(ST2$y)
-            check_ss2 <- attributes(ST2)$steady
-            if (!check_ss2) {
-                print('higher tol not reached')
-                print(i)
-                print(ST2$y)
+            ST2 <- stodes(init_guess, times = 0, func = modeqns,
+                            parms = X[i, ], rtol = 1e-4, atol = 1e-5)
+            checkSS2 <- attributes(ST2)$steady
+            if (checkSS2) {
+                return(ST2$y)
+            } else {
+                print('WARNING: SS2 not reached')
+                print(ST2)
                 return(init_guess)
             }
-            return(ST2$y) # set to run steady if has issues converging
-        } else {
-            return(ST$y)
         }
-        }
+    }
+
+        # #ST1 <- runsteady(init_guess, time = c(0,5000), func = modeqns,
+        #                     #parms = X[i, ])
+        # # ST1 <- runsteady(init_guess, time = c(0, 500), func = modeqns,
+        # #                     parms = X[i, ])
+        # # ST <- stodes(ST1$y, times = 0, func = modeqns,
+        # #                     parms = X[i, ], rtol = 1e-5, atol = 1e-6)
+        # # # attributes(ST) # could use this to debug and see what attributes are!
+        # # check_ss1 <- attributes(ST)$steady # this can check for steady state
+        # # if (!check_ss1) {
+        # #     print('trying larger tol')
+        # #     print(i)
+        # #     # print(X[i, ])
+        # #     print(ST1$y)
+        # #     print(ST$y)
+        # #     ST2 <- stodes(ST1$y, times = 0, func = modeqns,
+        # #                     parms = X[i, ], rtol = 1e-3, atol = 1e-4)
+        # #     print(ST2$y)
+        # #     check_ss2 <- attributes(ST2)$steady
+        # #     if (!check_ss2) {
+        # #         print('higher tol not reached')
+        # #         print(i)
+        # #         print(ST2$y)
+        # #         return(init_guess)
+        # #     }
+        # #     return(ST2$y) # set to run steady if has issues converging
+        # # } else {
+        # #     return(ST$y)
+        # # }
+        # }
 
     res_per_par <- sapply(1:nrow(X), one_par, simplify = TRUE)
     res_per_state <- aperm(res_per_par)
 
-    #var_out = "PTHp_con"
     if (varname == 'amt_PTHg') {
         varid <- 1
     } else if (varname == 'PTHp_con') {
