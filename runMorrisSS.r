@@ -35,7 +35,7 @@ if (sexORrep == 'male') {
 # run Morris Method
 set.seed(151)
 source("compute_ss.r")
-rval = 100
+rval = 1000
 startall <- Sys.time()
 print(startall)
 # PTHp_con
